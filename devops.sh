@@ -1,5 +1,14 @@
 #!/bin/sh
 
+echo "Running apt update..."
+sudo apt update > /tmp/apt_update
+echo "Runninng apt upgrade..."
+sudo apt upgrade -y > /tmp/apt_upgrade
+echo "Installing python3-pip..."
+sudo apt install -y python3-pip > /tmp/apt_install_python3_pip
+echo "Installing Ansible by python3-pip..."
+sudo -H pip3 install ansible > /tmp/pip_install_ansible
+
 echo "Adding Azure_DevOps User..."
 adduser --quiet --disabled-password --shell /bin/bash --home /home/azure_devops --gecos "Azure Agent DevOps" azure_devops
 echo "Adding Azure_DevOps user to sudoers..."
