@@ -1,9 +1,5 @@
 #!/bin/sh
 
-echo "Running apt update..."
-apt update
-echo "Runninng apt upgrade..."
-apt upgrade -y
 echo "Adding Azure_DevOps User..."
 adduser --quiet --disabled-password --shell /bin/bash --home /home/azure_devops --gecos "Azure Agent DevOps" azure_devops
 echo "Adding Azure_DevOps user to sudoers..."
@@ -26,7 +22,7 @@ chmod -R 777 .
 echo "extracted"
 ./bin/installdependencies.sh
 echo "dependencies installed"
-sudo -u azure_devops ./config.sh --unattended --deploymentgroup --deploymentgroupname $1 --url $2 --auth pat --token $3 --pool $4 --agent $5 --projectname $6 --acceptTeeEula --work ./_work --runAsService
+sudo -u azure_devops ./config.sh --unattended --deploymentgroup --deploymentgroupname $1 --url $2 --auth pat --token $3 --agent $4 --projectname $5 --acceptTeeEula --work ./_work --runAsService
 echo "configuration done"
 ./svc.sh install
 echo "service installed"
