@@ -31,7 +31,7 @@ chmod -R 777 .
 echo "extracted"
 ./bin/installdependencies.sh
 echo "dependencies installed"
-sudo -u azure_devops ./config.sh --unattended --deploymentgroup --deploymentgroupname $1 --url $2 --auth pat --token $3 --agent $4 --projectname $5 --acceptTeeEula --work ./_work --runAsService
+sudo -u azure_devops ./config.sh --unattended --deploymentgroup --deploymentgroupname $1 --url $2 --auth pat --token $3 --agent $4 --projectname $5 --addDeploymentGroupTags --deploymentGroupTags $6 --acceptTeeEula --work ./_work --runAsService
 echo "configuration done"
 ./svc.sh install
 echo "service installed"
