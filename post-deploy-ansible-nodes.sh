@@ -18,3 +18,9 @@ PUBKEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDGi6uwgJH9e+sr/bIJlWzDun9u0d8Ir/lH
 echo ${PUBKEY} > /home/azure_devops/.ssh/authorized_keys
 chown azure_devops.azure_devops /home/azure_devops/.ssh/authorized_keys
 chmod 644 /home/azure_devops/.ssh/authorized_keys
+
+## add a swap file in Linux Azure virtual machines ##
+sed -i 's/ResourceDisk.Format=n/ResourceDisk.Format=y/g' /etc/waagent.conf
+sed -i 's/ResourceDisk.EnableSwap=n/ResourceDisk.EnableSwap=y/g' /etc/waagent.conf
+sed -i 's/ResourceDisk.SwapSizeMB=0/ResourceDisk.SwapSizeMB=2048/g' /etc/waagent.conf
+reboot
