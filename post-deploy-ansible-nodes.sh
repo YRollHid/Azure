@@ -14,7 +14,7 @@ mkdir /home/azure_devops/.ssh
 chown azure_devops.azure_devops /home/azure_devops/.ssh
 chmod 700 /home/azure_devops/.ssh
 
-PUBKEY="$1"
+PUBKEY=$1
 echo ${PUBKEY} > /home/azure_devops/.ssh/authorized_keys
 chown azure_devops.azure_devops /home/azure_devops/.ssh/authorized_keys
 chmod 644 /home/azure_devops/.ssh/authorized_keys
