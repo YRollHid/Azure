@@ -34,6 +34,7 @@ echo "extracted"
 echo "dependencies installed"
 sudo -u azure_devops ./config.sh --unattended --deploymentgroup --deploymentgroupname $1 --url $2 --auth pat --token $3 --agent $4 --projectname $5 --addDeploymentGroupTags --deploymentGroupTags $6 --acceptTeeEula --work ./_work --runAsService
 echo "configuration done"
+sudo su azure_devops
 sudo ./svc.sh install
 echo "service installed"
 sudo ./svc.sh start
