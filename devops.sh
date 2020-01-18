@@ -8,6 +8,8 @@ echo "Installing python3-pip..."
 sudo apt install -y python3-pip > /tmp/apt_install_python3_pip
 echo "Installing Ansible by python3-pip..."
 sudo -H pip3 install ansible > /tmp/pip_install_ansible
+echo "Installing Atop for Monitoring..."
+sudo apt install -y atop
 
 echo "Adding Azure_DevOps User..."
 adduser --quiet --disabled-password --shell /bin/bash --home /home/azure_devops --gecos "Azure Agent DevOps" azure_devops
