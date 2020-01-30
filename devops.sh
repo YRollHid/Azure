@@ -20,6 +20,7 @@ echo $@
 echo "start"
 cd /home/azure_devops
 mkdir agent
+chown -R azure_devops.azure_devops agent
 cd agent
 
 
