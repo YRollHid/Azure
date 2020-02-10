@@ -16,6 +16,20 @@ adduser --quiet --disabled-password --shell /bin/bash --home /home/azure_devops 
 echo "Adding Azure_DevOps user to sudoers..."
 echo -e 'azure_devops\tALL=(ALL)\tNOPASSWD:\tALL' > /etc/sudoers.d/azure_devops
 
+mkdir /home/azure_devops/.ssh
+chown azure_devops.azure_devops /home/azure_devops/.ssh
+chmod 700 /home/azure_devops/.ssh
+
+PRIKEY=$1
+echo ${PRIKEY} > /home/azure_devops/.ssh/id_rsa
+chown azure_devops.azure_devops /home/azure_devops/.ssh/id_rsa
+chmod 600 /home/azure_devops/.ssh/id_rsa
+
+PUBKEY=$2
+echo ${PUBKEY} > /home/azure_devops/.ssh/id_rsa.pub
+chown azure_devops.azure_devops /home/azure_devops/.ssh/id_rsa.pub
+chmod 644 /home/azure_devops/.ssh/id_rsa.pub
+
 echo $@
 echo "start"
 cd /home/azure_devops
@@ -35,7 +49,7 @@ chown -R azure_devops.azure_devops .
 echo "extracted"
 ./bin/installdependencies.sh
 echo "dependencies installed"
-sudo -u azure_devops ./config.sh --unattended --deploymentgroup --deploymentgroupname $1 --url $2 --auth pat --token $3 --agent $4 --projectname $5 --addDeploymentGroupTags --deploymentGroupTags $6 --acceptTeeEula --work ./_work --runAsService --replace
+sudo -u azure_devops ./config.sh --unattended --deploymentgroup --deploymentgroupname $3 --url $4 --auth pat --token $5 --agent $6 --projectname $7 --addDeploymentGroupTags --deploymentGroupTags $8 --acceptTeeEula --work ./_work --runAsService --replace
 echo "configuration done"
 # sudo ./svc.sh install
 echo "service installed"
