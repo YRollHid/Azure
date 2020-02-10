@@ -21,10 +21,15 @@ chown azure_devops.azure_devops /home/azure_devops/.ssh
 chmod 700 /home/azure_devops/.ssh
 
 PRIKEY=$1
-echo ${PRIKEY} > /home/azure_devops/.ssh/id_rsa
+echo ${PRIKEY} > /home/azure_devops/.ssh/id_rsa.raw
+
+sed -e "s/-----BEGIN RSA PRIVATE KEY-----/&\n/"\
+    -e "s/-----END RSA PRIVATE KEY-----/\n&/"\
+    -e "s/\S\{64\}/&\n/g"\
+    /home/azure_devops/.ssh/id_rsa.raw > /home/azure_devops/.ssh/id_rsa
+
 chown azure_devops.azure_devops /home/azure_devops/.ssh/id_rsa
 chmod 600 /home/azure_devops/.ssh/id_rsa
-sed -i 's/ /\n/g' /home/azure_devops/.ssh/id_rsa
 
 PUBKEY=$2
 echo ${PUBKEY} > /home/azure_devops/.ssh/id_rsa.pub
