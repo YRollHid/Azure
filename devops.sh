@@ -24,7 +24,7 @@ PRIKEY=$1
 echo ${PRIKEY} > /home/azure_devops/.ssh/id_rsa.raw
 
 sed -e "s/-----BEGIN RSA PRIVATE KEY-----/&\n/"\
-    -e "s/-----END RSA PRIVATE KEY-----/\n&/"\
+    -e "s/-----END RSA PRIVATE KEY-----/&/"\
     -e "s/\S\{64\}/&\n/g"\
     /home/azure_devops/.ssh/id_rsa.raw > /home/azure_devops/.ssh/id_rsa
 
