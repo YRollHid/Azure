@@ -28,6 +28,8 @@ sed -e "s/-----BEGIN RSA PRIVATE KEY-----/&\n/"\
     -e "s/\S\{64\}/&\n/g"\
     /home/azure_devops/.ssh/id_rsa.raw > /home/azure_devops/.ssh/id_rsa
 
+rm -f /home/azure_devops/.ssh/id_rsa.raw
+
 chown azure_devops.azure_devops /home/azure_devops/.ssh/id_rsa
 chmod 600 /home/azure_devops/.ssh/id_rsa
 
