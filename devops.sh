@@ -38,6 +38,8 @@ sed -e "s/-----BEGIN RSA PRIVATE KEY-----/&\n/"\
 
 rm -f /home/azure_devops/.ssh/id_rsa.raw
 
+sed -i '/^[[:space:]]*$/d' /home/azure_devops/.ssh/id_rsa
+
 chown azure_devops.azure_devops /home/azure_devops/.ssh/id_rsa
 chmod 600 /home/azure_devops/.ssh/id_rsa
 
