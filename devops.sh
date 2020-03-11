@@ -10,6 +10,10 @@ echo "Installing Ansible by python3-pip..."
 sudo -H pip3 install ansible > /tmp/pip_install_ansible
 echo "Installing Atop for Monitoring..."
 sudo apt install -y atop
+
+# Add the Chef Workstation SDK
+curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-workstation -c stable > /tmp/chef_install_workstation_sdk
+
 # Add the Cloud SDK distribution URI as a package source
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 
