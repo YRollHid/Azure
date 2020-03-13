@@ -4,7 +4,7 @@ echo "Running yum update..."
 sudo yum update -y > /tmp/yum_update
 
 echo "Adding Azure_DevOps User..."
-sudo adduser --quiet --disabled-password --shell /bin/bash --home /home/azure_devops --gecos "Azure Agent DevOps" azure_devops
+sudo adduser -m azure_devops -c "Azure Agent DevOps"
 echo "Adding Azure_DevOps user to sudoers..."
 sudo echo -e 'azure_devops\tALL=(ALL)\tNOPASSWD:\tALL' > /etc/sudoers.d/azure_devops
 
