@@ -55,11 +55,6 @@ echo ${PUBKEY} > /home/azure_devops/.ssh/id_rsa.pub
 chown azure_devops.azure_devops /home/azure_devops/.ssh/id_rsa.pub
 chmod 644 /home/azure_devops/.ssh/id_rsa.pub
 
-## add a swap file in Linux Azure virtual machines ##
-sed -i 's/ResourceDisk.Format=n/ResourceDisk.Format=y/g' /etc/waagent.conf
-sed -i 's/ResourceDisk.EnableSwap=n/ResourceDisk.EnableSwap=y/g' /etc/waagent.conf
-sed -i 's/ResourceDisk.SwapSizeMB=0/ResourceDisk.SwapSizeMB=2048/g' /etc/waagent.conf
-
 # Installing the Azure DevOps agent in deploymentgroup mode
 echo $@
 echo "start"
@@ -88,3 +83,9 @@ sudo -u azure_devops sudo ./svc.sh start
 echo "service started"
 echo "config done"
 exit 0
+
+## add a swap file in Linux Azure virtual machines ##
+sed -i 's/ResourceDisk.Format=n/ResourceDisk.Format=y/g' /etc/waagent.conf
+sed -i 's/ResourceDisk.EnableSwap=n/ResourceDisk.EnableSwap=y/g' /etc/waagent.conf
+sed -i 's/ResourceDisk.SwapSizeMB=0/ResourceDisk.SwapSizeMB=2048/g' /etc/waagent.conf
+shutdown -r +1
