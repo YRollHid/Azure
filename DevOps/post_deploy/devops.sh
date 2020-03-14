@@ -23,6 +23,7 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyr
 # Update the package list and install the Cloud SDK
 sudo apt update && sudo apt install -y google-cloud-sdk > /tmp/apt_install_google-cloud-sdk 
 
+# Adding user
 echo "Adding Azure_DevOps User..."
 adduser --quiet --disabled-password --shell /bin/bash --home /home/azure_devops --gecos "Azure Agent DevOps" azure_devops
 echo "Adding Azure_DevOps user to sudoers..."
@@ -32,6 +33,7 @@ mkdir /home/azure_devops/.ssh
 chown azure_devops.azure_devops /home/azure_devops/.ssh
 chmod 700 /home/azure_devops/.ssh
 
+# Parsing the private key
 PRIKEY=$1
 echo ${PRIKEY} > /home/azure_devops/.ssh/id_rsa.raw
 
@@ -47,11 +49,13 @@ sed -i '/^[[:space:]]*$/d' /home/azure_devops/.ssh/id_rsa
 chown azure_devops.azure_devops /home/azure_devops/.ssh/id_rsa
 chmod 600 /home/azure_devops/.ssh/id_rsa
 
+# Parsing the public key
 PUBKEY=$2
 echo ${PUBKEY} > /home/azure_devops/.ssh/id_rsa.pub
 chown azure_devops.azure_devops /home/azure_devops/.ssh/id_rsa.pub
 chmod 644 /home/azure_devops/.ssh/id_rsa.pub
 
+# Installing the Azure DevOps agent in deploymentgroup mode
 echo $@
 echo "start"
 cd /home/azure_devops
