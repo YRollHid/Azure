@@ -12,7 +12,7 @@ Requirements:
 * [Azure DevOps Account](https://azure.microsoft.com/en-us/services/devops/)
 * [Chef Manage Account](https://manage.chef.io/login)
 
-Once you have your Azure Pipeline setup with Terraform for cloud provisioning, we can start using the Bash script "devops.sh" under DevOps/post_deploy. The idea of this script is to use it as a CustomScript via [Microsoft.Azure.Extensions](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/features-windows). I've been heavily inspired by Maximilian Melcher's article on [melcher.dev](https://melcher.dev/2019/02/create-an-azure-devops-build/release-agent-with-terraform-ubuntu-edition/)
+Once you have your Azure Pipeline setup with Terraform for cloud provisioning, we can start using the Bash script ["devops.sh"](https://github.com/YRollHid/Azure/tree/master/DevOps/IaaS/Linux/post_deploy). The idea of this script is to use it as a CustomScript via [Microsoft.Azure.Extensions](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/features-windows). I've been heavily inspired by Maximilian Melcher's article on [melcher.dev](https://melcher.dev/2019/02/create-an-azure-devops-build/release-agent-with-terraform-ubuntu-edition/)
 
 
 
